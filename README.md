@@ -26,4 +26,5 @@ Explain low-level embedded concepts visually, practically, and from first princi
 Embedded Systems World
 
 GitHub: https://github.com/vijayanandhini
+LinkedIn: https://www.linkedin.com/company/embedded-systems-world/
 Blog: https://embeddedsysworld.blogspot.com/
