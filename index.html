@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Embedded Systems World — practical embedded C, ARM Cortex-M, RTOS, interrupts, firmware debugging and interview preparation." />
+  <title>Embedded Systems World</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Embedded Systems World home">
+        <span class="brand-mark" aria-hidden="true">ESW</span>
+        <span class="brand-text">Embedded Systems World</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#why-series">Why Series</a>
+        <a href="#topics">Topics</a>
+        <a href="#projects">Projects</a>
+        <a href="#interview">Interview Prep</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Embedded firmware • explained from first principles</p>
+          <h1>Understand what your firmware is really doing.</h1>
+          <p class="hero-copy">
+            Practical explanations of Embedded C, ARM Cortex-M, interrupts, RTOS, low-level debugging,
+            peripherals and interview concepts — built for engineers who want depth without unnecessary complexity.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#why-series">Explore the Why Series</a>
+            <a class="button secondary" href="https://embeddedsysworld.blogspot.com/" target="_blank" rel="noreferrer">Read the blog</a>
+          </div>
+        </div>
+        <aside class="code-card" aria-label="Embedded C example">
+          <div class="code-card-top"><span></span><span></span><span></span></div>
+          <pre><code>volatile uint32_t *status =
+    (volatile uint32_t *)0x40000000U;
+
+while (((*status) & READY_BIT) == 0U) {
+    /* wait for hardware */
+}
+
+process_data();</code></pre>
+          <p>Why <code>volatile</code>? Why a pointer? What can the compiler optimize? We explain the reasoning, not just the syntax.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="why-series">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Featured learning path</p>
+          <h2>The Why Series</h2>
+          <p>Short, focused explanations of the questions firmware engineers keep encountering.</p>
+        </div>
+        <div class="cards three">
+          <article class="card">
+            <p class="tag">Interrupts</p>
+            <h3>Why are interrupts better than polling?</h3>
+            <p>Understand CPU utilization, latency, responsiveness and when polling still makes sense.</p>
+            <a href="https://embeddedsysworld.blogspot.com/2026/09/why-are-interrupts-better-than-polling.html" target="_blank" rel="noreferrer">Read article →</a>
+          </article>
+          <article class="card">
+            <p class="tag">Stack</p>
+            <h3>Why does the stack usually grow downward?</h3>
+            <p>Explore historical memory layout, address-space growth and how stack conventions evolved.</p>
+            <a href="https://embeddedsysworld.blogspot.com/2026/09/why-does-stack-usually-grow-downward.html" target="_blank" rel="noreferrer">Read article →</a>
+          </article>
+          <article class="card">
+            <p class="tag">ARM</p>
+            <h3>Why can’t large constants always fit in one instruction?</h3>
+            <p>See how instruction width, immediate fields and constant synthesis affect generated code.</p>
+            <a href="https://embeddedsysworld.blogspot.com/2026/04/why-cant-large-constants-always-fit.html" target="_blank" rel="noreferrer">Read article →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="topics">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Core topics</p>
+          <h2>Build strong firmware fundamentals</h2>
+        </div>
+        <div class="topic-grid">
+          <article><h3>Embedded C & C++</h3><p>Pointers, volatile, const, structs, unions, bit manipulation, memory layout and safer production-style C.</p></article>
+          <article><h3>ARM Cortex-M</h3><p>Registers, exception entry, stack frames, LR, PC, MSP/PSP, vector tables and interrupt return.</p></article>
+          <article><h3>RTOS</h3><p>Threads, mutexes, semaphores, priority inversion, ISR synchronization and scheduling fundamentals.</p></article>
+          <article><h3>Peripherals</h3><p>UART, SPI, I²C, GPIO, timers and practical register-level reasoning.</p></article>
+          <article><h3>Firmware Debugging</h3><p>Memory faults, race conditions, timing problems, compiler behavior and board bring-up thinking.</p></article>
+          <article><h3>Security & Boot</h3><p>Secure boot concepts, integrity checks, boot flow, platform security and resilient firmware design.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Hands-on learning</p>
+          <h2>Projects that connect theory to firmware</h2>
+          <p class="lead">Small, explainable examples are more valuable than giant demo repositories when you are trying to learn one concept deeply.</p>
+        </div>
+        <div class="stacked-list">
+          <div><strong>UART packet parser</strong><span>Status flags, message type, variable-length payload and XOR checksum.</span></div>
+          <div><strong>Interrupt flow visualizer</strong><span>Follow exception entry, automatic stacking, ISR execution and exception return.</span></div>
+          <div><strong>RTOS synchronization examples</strong><span>Mutex vs semaphore, ISR-to-task signaling and priority inversion scenarios.</span></div>
+          <div><strong>Register access lab</strong><span>Understand pointer types, volatile access and compiler optimization around MMIO.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="interview">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Interview preparation</p>
+          <h2>Prepare the way experienced firmware engineers are interviewed.</h2>
+          <p class="lead">Not just definitions — expect follow-up questions that test what actually happens at runtime.</p>
+        </div>
+        <div class="question-box">
+          <p>What happens if hardware changes a register between two reads?</p>
+          <p>What exactly does <code>volatile</code> prevent the compiler from doing?</p>
+          <p>What is automatically pushed on the Cortex-M stack during an interrupt?</p>
+          <p>Can one task unlock a mutex owned by another task?</p>
+          <p>Why would an ISR give a semaphore instead of taking one?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-card">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Embedded Systems World</h2>
+          <p>Independent technical learning content for embedded and firmware engineers. The goal is simple: make low-level concepts easier to reason about, visualize and apply in real systems.</p>
+        </div>
+        <div class="about-links">
+          <a href="https://github.com/vijayanandhini" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://embeddedsysworld.blogspot.com/" target="_blank" rel="noreferrer">Blog</a>
+          <a href="https://www.linkedin.com/company/embedded-systems-world/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <span>© <span id="year"></span> Embedded Systems World</span>
+      <span>Built for firmware engineers.</span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
