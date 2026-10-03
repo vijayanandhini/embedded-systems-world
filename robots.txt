@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vijayanandhini.github.io/embedded-systems-world/sitemap.xml
+Sitemap: https://embeddedsysworld.com/sitemap.xml
