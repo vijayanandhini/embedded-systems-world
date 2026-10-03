@@ -169,18 +169,71 @@ process_data();</code></pre>
     </section>
 
     <section class="section" id="interview">
-      <div class="container split">
-        <div>
+      <div class="container">
+        <div class="section-heading">
           <p class="eyebrow">Interview preparation</p>
-          <h2>Prepare the way experienced firmware engineers are interviewed.</h2>
-          <p class="lead">Not just definitions — expect follow-up questions that test what actually happens at runtime.</p>
+          <h2>Embedded Firmware Interview Prep Library</h2>
+          <p>Start with free practical questions and concise answers. Premium packs with deeper follow-ups, code exercises and topic-wise preparation will be added separately.</p>
         </div>
-        <div class="question-box">
-          <p>What happens if hardware changes a register between two reads?</p>
-          <p>What exactly does <code>volatile</code> prevent the compiler from doing?</p>
-          <p>What is automatically pushed on the Cortex-M stack during an interrupt?</p>
-          <p>Can one task unlock a mutex owned by another task?</p>
-          <p>Why would an ISR give a semaphore instead of taking one?</p>
+
+        <div class="interview-grid">
+          <div class="qa-list" aria-label="Free interview questions and answers">
+            <p class="library-label">Free Q&amp;A</p>
+
+            <details class="qa-item" open>
+              <summary>What happens if hardware changes a register between two reads?</summary>
+              <div class="qa-answer">
+                <p>If a memory-mapped hardware register can change asynchronously, two reads from the same address may return different values. Hardware may update status bits between the reads.</p>
+                <p>Declaring the object <code>volatile</code> tells the compiler that each access matters, so it must perform the requested reads instead of reusing a previously loaded value.</p>
+              </div>
+            </details>
+
+            <details class="qa-item">
+              <summary>What exactly does <code>volatile</code> prevent the compiler from doing?</summary>
+              <div class="qa-answer">
+                <p>For accesses to a volatile object, the compiler must preserve the observable reads and writes required by the program instead of removing or merging them as ordinary redundant accesses.</p>
+                <p>It does <strong>not</strong> make an operation atomic, provide thread synchronization, or replace memory-ordering primitives.</p>
+              </div>
+            </details>
+
+            <details class="qa-item">
+              <summary>What is automatically pushed on the Cortex-M stack during an interrupt?</summary>
+              <div class="qa-answer">
+                <p>On exception entry, a Cortex-M automatically stacks <code>R0-R3</code>, <code>R12</code>, <code>LR</code>, <code>PC</code> and <code>xPSR</code>. This hardware-created stack frame allows the interrupted code to resume after the exception returns.</p>
+              </div>
+            </details>
+
+            <details class="qa-item">
+              <summary>Can one task unlock a mutex owned by another task?</summary>
+              <div class="qa-answer">
+                <p>Normally, no. A mutex has ownership: the task that locks it is expected to unlock it. That ownership is what allows RTOS features such as priority inheritance to work correctly.</p>
+                <p>For cross-context signaling, a semaphore or another synchronization primitive is usually a better fit.</p>
+              </div>
+            </details>
+
+            <details class="qa-item">
+              <summary>Why would an ISR give a semaphore instead of taking one?</summary>
+              <div class="qa-answer">
+                <p>An ISR should avoid blocking. It can signal that an event occurred by giving an ISR-safe semaphore, allowing a waiting task to wake up and perform the longer processing outside interrupt context.</p>
+              </div>
+            </details>
+          </div>
+
+          <aside class="premium-panel" aria-label="Premium interview prep coming soon">
+            <p class="tag">Coming Soon</p>
+            <h3>Premium Embedded Firmware Interview Prep</h3>
+            <p>Deeper preparation for engineers targeting embedded and firmware roles.</p>
+            <ul>
+              <li>Topic-wise interview question banks</li>
+              <li>Detailed answers and follow-up questions</li>
+              <li>Embedded C and C++ coding exercises</li>
+              <li>ARM Cortex-M and interrupt scenarios</li>
+              <li>RTOS synchronization and debugging questions</li>
+              <li>UART, SPI and I²C interview preparation</li>
+              <li>Senior-level troubleshooting scenarios</li>
+            </ul>
+            <p class="premium-note">Premium content will be delivered separately from this public GitHub repository.</p>
+          </aside>
         </div>
       </div>
     </section>
